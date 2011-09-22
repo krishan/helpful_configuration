@@ -4,17 +4,6 @@ class HelpfulConfiguration
   class ConfigurationMissingError < StandardError
   end
 
-  def self.from_file(file, keys)
-    config = new
-    config.file = File.expand_path(file)
-    if File.exists?(file)
-      JSON.parse(File.read(file)).each do |key, value|
-        config[key] = value
-      end
-    end
-    config
-  end
-
   def initialize(configuration = {}, file=nil)
     @configuration = configuration
     @explanation = {}
